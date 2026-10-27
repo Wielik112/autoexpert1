@@ -434,18 +434,27 @@ p {
   position: relative;
   flex: none;
 }
-.is-open .status__dot {
+.status.is-open .status__dot {
   background: var(--ok);
-  box-shadow: 0 0 0 0 rgba(51, 209, 122, 0.6);
-  animation: pulse 2s infinite;
 }
-.is-open .status__label {
+/* ring animated with transform/opacity only, so it runs on the compositor */
+.status.is-open .status__dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--ok);
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: pulse 2.2s cubic-bezier(0.22, 0.61, 0.36, 1) infinite;
+}
+.status.is-open .status__label {
   color: var(--ok);
 }
-.is-closed .status__dot {
+.status.is-closed .status__dot {
   background: var(--red-2);
 }
-.is-closed .status__label {
+.status.is-closed .status__label {
   color: var(--steel);
 }
 .status__detail {
@@ -455,13 +464,12 @@ p {
 }
 @keyframes pulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(51, 209, 122, 0.55);
-  }
-  70% {
-    box-shadow: 0 0 0 9px rgba(51, 209, 122, 0);
+    transform: scale(1);
+    opacity: 0.6;
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(51, 209, 122, 0);
+    transform: scale(3.25);
+    opacity: 0;
   }
 }
 
