@@ -985,19 +985,24 @@ p {
 }
 .console__scan {
   position: absolute;
-  left: 0;
-  right: 0;
-  height: 80px;
-  background: linear-gradient(180deg, transparent, rgba(227, 36, 27, 0.12), transparent);
+  inset: 0;
+  /* 80px band centred in a full-height layer, moved with transform (no layout) */
+  background: linear-gradient(
+    180deg,
+    transparent calc(50% - 40px),
+    rgba(227, 36, 27, 0.12) 50%,
+    transparent calc(50% + 40px)
+  );
+  will-change: transform;
   animation: scan 4.5s linear infinite;
   pointer-events: none;
 }
 @keyframes scan {
   from {
-    top: -80px;
+    transform: translate3d(0, calc(-50% - 40px), 0);
   }
   to {
-    top: 100%;
+    transform: translate3d(0, calc(50% + 40px), 0);
   }
 }
 .console__head {
@@ -1067,12 +1072,18 @@ p {
   position: absolute;
   inset: 0;
   width: 200%;
+  max-width: none;
   height: 100%;
+  will-change: transform;
   animation: wave 6s linear infinite;
 }
+/* path repeats every 400 of 800 units, so -50% lands on an identical frame */
 @keyframes wave {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
   to {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 .console__bar {

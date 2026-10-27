@@ -98,7 +98,7 @@ export default function Home() {
               <div className="console__wave" aria-hidden="true">
                 <svg viewBox="0 0 800 84" preserveAspectRatio="none">
                   <path
-                    d="M0 50 L40 50 L55 50 L62 18 L70 70 L78 42 L90 50 L200 50 L215 50 L222 14 L230 74 L238 40 L250 50 L360 50 L375 50 L382 22 L390 68 L398 44 L410 50 L400 50 L440 50 L455 50 L462 18 L470 70 L478 42 L490 50 L600 50 L615 50 L622 14 L630 74 L638 40 L650 50 L760 50 L775 50 L782 22 L790 68 L798 44 L800 50"
+                    d="M0 50 L30 50 L36 18 L43 70 L50 42 L60 50 L130 50 L136 14 L143 74 L150 42 L160 50 L230 50 L236 22 L243 68 L250 42 L260 50 L330 50 L336 16 L343 72 L350 42 L360 50 L430 50 L436 18 L443 70 L450 42 L460 50 L530 50 L536 14 L543 74 L550 42 L560 50 L630 50 L636 22 L643 68 L650 42 L660 50 L730 50 L736 16 L743 72 L750 42 L760 50 L800 50"
                     fill="none"
                     stroke="#ff3d32"
                     strokeWidth="2"
